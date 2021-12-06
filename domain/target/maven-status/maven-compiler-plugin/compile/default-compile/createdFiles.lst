@@ -1,0 +1,8 @@
+be\christophe\order\domain\users\mappers\ConvertCreateUserDto.class
+be\christophe\order\domain\users\User.class
+be\christophe\order\domain\users\Street.class
+be\christophe\order\domain\users\dto\CreateUser.class
+be\christophe\order\domain\users\dto\UserDto.class
+be\christophe\order\domain\users\Address.class
+be\christophe\order\domain\users\City.class
+be\christophe\order\domain\users\mappers\ConvertUserDto.class

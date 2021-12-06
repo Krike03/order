@@ -1,0 +1,4 @@
+be\christophe\order\user\services\UsersService.class
+be\christophe\order\user\UserApplication.class
+be\christophe\order\user\repositories\UserRepository.class
+be\christophe\order\user\api\userController.class
