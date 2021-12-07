@@ -4,8 +4,7 @@ import be.christophe.order.user.repositories.UserRepository;
 import be.christophe.order.domain.users.User;
 import be.christophe.order.domain.users.dto.CreateUserDto;
 import be.christophe.order.domain.users.dto.UserDto;
-import be.christophe.order.domain.users.mappers.ConvertCreateUserDto;
-import be.christophe.order.domain.users.mappers.ConvertUserDto;
+import be.christophe.order.domain.service.Mapper;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +17,7 @@ public class UsersService {
     }
 
     public UserDto createNewUser(CreateUserDto createUser){
-        User user = ConvertCreateUserDto.convertToUser(createUser);
-        return ConvertUserDto.ConvertToUserDto(userRepository.insertUser(user));
+        User user = Mapper.mapper(createUser);
+        return Mapper.mapper(userRepository.insertUser(user));
     }
 }
