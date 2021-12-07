@@ -12,7 +12,7 @@ class UserRepositoryTest {
 
     @BeforeEach
     void setUp(){
-        Address address = new Address("156", new Street("streetname", new City("2122", "cityName")));
+        Address address = new Address("156", new Street("streetName", new City("2122", "cityName")));
         user = new User("first", "last", "email@email.com", address, "046546846");
         userRepository = new UserRepository();
     }
