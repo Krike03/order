@@ -7,6 +7,7 @@ import be.christophe.order.domain.users.dto.UserDto;
 public class ConvertUserDto {
     public static UserDto ConvertToUserDto(User user){
         return new UserDto()
+                .withId(user.getId())
                 .withFirstName(user.getFirstName())
                 .withLastName(user.getLastName())
                 .withEmailAddress(user.getEmailAddress())

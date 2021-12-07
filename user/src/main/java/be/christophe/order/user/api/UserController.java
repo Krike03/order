@@ -1,6 +1,6 @@
 package be.christophe.order.user.api;
 
-import be.christophe.order.domain.users.dto.CreateUser;
+import be.christophe.order.domain.users.dto.CreateUserDto;
 import be.christophe.order.domain.users.dto.UserDto;
 import be.christophe.order.user.services.UsersService;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class UserController {
 
     @PostMapping(consumes = "application/json;charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDto createUser(@RequestBody CreateUser createUser){
+    public UserDto createUser(@RequestBody CreateUserDto createUser){
         return usersService.createNewUser(createUser);
     }
 

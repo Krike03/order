@@ -1,7 +1,10 @@
+be\christophe\order\domain\items\dto\ItemDto.class
+be\christophe\order\domain\users\dto\CreateUserDto.class
 be\christophe\order\domain\users\mappers\ConvertCreateUserDto.class
 be\christophe\order\domain\users\User.class
 be\christophe\order\domain\users\Street.class
-be\christophe\order\domain\users\dto\CreateUser.class
+be\christophe\order\domain\items\Item.class
+be\christophe\order\domain\items\Price.class
 be\christophe\order\domain\users\dto\UserDto.class
 be\christophe\order\domain\users\Address.class
 be\christophe\order\domain\users\City.class

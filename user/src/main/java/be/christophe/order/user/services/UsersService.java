@@ -2,7 +2,7 @@ package be.christophe.order.user.services;
 
 import be.christophe.order.user.repositories.UserRepository;
 import be.christophe.order.domain.users.User;
-import be.christophe.order.domain.users.dto.CreateUser;
+import be.christophe.order.domain.users.dto.CreateUserDto;
 import be.christophe.order.domain.users.dto.UserDto;
 import be.christophe.order.domain.users.mappers.ConvertCreateUserDto;
 import be.christophe.order.domain.users.mappers.ConvertUserDto;
@@ -17,7 +17,7 @@ public class UsersService {
         this.userRepository = userRepository;
     }
 
-    public UserDto createNewUser(CreateUser createUser){
+    public UserDto createNewUser(CreateUserDto createUser){
         User user = ConvertCreateUserDto.convertToUser(createUser);
         return ConvertUserDto.ConvertToUserDto(userRepository.insertUser(user));
     }

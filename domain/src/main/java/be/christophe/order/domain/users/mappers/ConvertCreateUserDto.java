@@ -1,10 +1,10 @@
 package be.christophe.order.domain.users.mappers;
 
 import be.christophe.order.domain.users.*;
-import be.christophe.order.domain.users.dto.CreateUser;
+import be.christophe.order.domain.users.dto.CreateUserDto;
 
 public class ConvertCreateUserDto {
-    public static User convertToUser(CreateUser createUser){
+    public static User convertToUser(CreateUserDto createUser){
         City city = new City(createUser.getZipCode(), createUser.getCityName());
         Street street = new Street(createUser.getStreetName(), city);
         Address address = new Address(createUser.getHouseNumber(), street);
