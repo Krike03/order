@@ -1,12 +1,17 @@
 package be.christophe.order.domain.items;
 
+import java.time.LocalDateTime;
+
 public class Price {
-    private double price;
-    private String currency;
+    private final double price;
+    private final String currency;
+    private final LocalDateTime localDate;
 
     public Price(double price, String currency) {
         this.price = price;
         this.currency = currency;
+        localDate = LocalDateTime.now();
+
     }
 
     public double getPrice() {
@@ -15,5 +20,9 @@ public class Price {
 
     public String getCurrency() {
         return currency;
+    }
+
+    public LocalDateTime getLocalDate() {
+        return localDate;
     }
 }

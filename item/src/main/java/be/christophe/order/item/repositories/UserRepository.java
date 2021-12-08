@@ -1,4 +1,4 @@
-package be.christophe.order.user.repositories;
+package be.christophe.order.item.repositories;
 
 import be.christophe.order.domain.users.User;
 import org.springframework.stereotype.Repository;
@@ -29,6 +29,6 @@ public class UserRepository {
        return  users.values().stream()
                 .filter(user -> user.getPassword().equals(password) && user.getUserName().equals(userName))
                 .findAny()
-               .orElse(null);
+                .orElse(null);
     }
 }

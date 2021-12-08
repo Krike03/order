@@ -1,6 +1,7 @@
 package be.christophe.order.item.api;
 
 import be.christophe.order.domain.items.dto.ItemDto;
+import be.christophe.order.domain.items.dto.UpdateItemDto;
 import be.christophe.order.item.services.ItemService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +15,15 @@ public class ItemController {
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
+
+    @PutMapping(path = "{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ItemDto putItem(@RequestBody UpdateItemDto updateItemDto,
+                           @PathVariable("id") String id,
+                           @RequestHeader(name ="Authorization",  required = false ) String authorization){
+        return itemService.updateItem(id, updateItemDto, authorization);
+    }
+
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)

@@ -9,8 +9,12 @@ public class User {
     private final String emailAddress;
     private final Address address;
     private final String phoneNumber;
+    private final String userName;
+    private final String password;
 
-    public User(String firstName, String lastName, String emailAddress, Address address, String phoneNumber) {
+    public User(String firstName, String lastName, String emailAddress, Address address, String phoneNumber, String userName, String password) {
+        this.userName = userName;
+        this.password = password;
         this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,5 +45,13 @@ public class User {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

@@ -9,6 +9,8 @@ public class CreateUserDto {
     private String zipCode;
     private String cityName;
     private String phoneNumber;
+    private String userName;
+    private String password;
 
     public CreateUserDto withFirstName(String firstName) {
         this.firstName = firstName;
@@ -50,6 +52,16 @@ public class CreateUserDto {
         return this;
     }
 
+    public CreateUserDto withPassword(String password) {
+        this.password = password;
+        return this;
+    }
+
+    public CreateUserDto withUserName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -80,5 +92,13 @@ public class CreateUserDto {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }
