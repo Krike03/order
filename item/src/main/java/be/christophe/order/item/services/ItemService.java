@@ -1,9 +1,11 @@
 package be.christophe.order.item.services;
 
+import be.christophe.order.domain.items.Item;
 import be.christophe.order.domain.items.Price;
+import be.christophe.order.domain.items.dto.CreateItemDto;
 import be.christophe.order.domain.items.dto.ItemDto;
 import be.christophe.order.domain.items.dto.UpdateItemDto;
-import be.christophe.order.domain.service.Mapper;
+import be.christophe.order.domain.service.ItemMapper;
 import be.christophe.order.item.api.UserController;
 import be.christophe.order.item.repositories.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -20,11 +22,16 @@ public class ItemService {
         this.userController = userController;
     }
 
-    public ItemDto insertItem(ItemDto itemDto) {
-        return Mapper.mapper(itemRepository.insertItem(Mapper.mapper(itemDto)));
+    public ItemDto insertItem(CreateItemDto createItemDto) {
+        if(createItemDto==null){ throw new NullPointerException("No item is added, a null object is given.");}
+        Item item = ItemMapper.mapperToItem(createItemDto);
+        Item returnedItem = itemRepository.insertItem(item);
+        ItemDto itemDto = ItemMapper.mapperToItemDto(returnedItem);
+        return itemDto;
     }
 
     public int getItemStockAmountById(String itemId) {
+        if(itemId == null){ throw new NullPointerException("Id is null");}
         return itemRepository.getItemStockAmountById(itemId);
     }
 
@@ -34,6 +41,6 @@ public class ItemService {
 
     public ItemDto updateItem(String id, UpdateItemDto updateItemDto, String authorization) {
         userController.login(authorization);
-        return Mapper.mapper(itemRepository.updateItem(id, updateItemDto));
+        return ItemMapper.mapperToItemDto(itemRepository.updateItem(id, updateItemDto));
     }
 }

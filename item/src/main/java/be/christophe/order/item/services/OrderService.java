@@ -4,7 +4,7 @@ import be.christophe.order.domain.itemgroup.ItemGroup;
 import be.christophe.order.domain.itemgroup.dto.CreateItemGroup;
 import be.christophe.order.domain.itemgroup.dto.ItemGroupDto;
 import be.christophe.order.domain.items.Price;
-import be.christophe.order.domain.service.Mapper;
+import be.christophe.order.domain.service.ItemMapper;
 import be.christophe.order.item.api.UserController;
 import be.christophe.order.item.repositories.OrderRepository;
 import org.springframework.stereotype.Service;
@@ -26,11 +26,11 @@ public class OrderService {
     public ItemGroupDto putItemGroup(CreateItemGroup createItemGroup, String authorization) {
         String userId = userController.login(authorization);
         int stock = itemService.getItemStockAmountById(createItemGroup.getItemId());
-        ItemGroup newItemGroup = Mapper.mapper(createItemGroup,
+        ItemGroup newItemGroup = ItemMapper.mapper(createItemGroup,
                 userId,
                 calculateShippingTime(createItemGroup, stock));
         orderRepository.putNewItemGroup(newItemGroup);
-        return Mapper.mapper(newItemGroup, calculatePrice(newItemGroup));
+        return ItemMapper.mapper(newItemGroup, calculatePrice(newItemGroup));
     }
 
     private String calculatePrice(ItemGroup newItemGroup) {

@@ -1,6 +1,6 @@
 package be.christophe.order.domain.items.dto;
 
-import be.christophe.order.domain.items.Price;
+import java.util.Objects;
 
 public class ItemDto {
     private final String id;
@@ -41,5 +41,13 @@ public class ItemDto {
 
     public int getAmountStock() {
         return amountStock;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemDto itemDto = (ItemDto) o;
+        return Double.compare(itemDto.price, price) == 0 && amountStock == itemDto.amountStock && Objects.equals(id, itemDto.id) && Objects.equals(name, itemDto.name) && Objects.equals(description, itemDto.description) && Objects.equals(currency, itemDto.currency);
     }
 }

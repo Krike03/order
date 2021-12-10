@@ -1,7 +1,7 @@
 package be.christophe.order.user.services;
 
 import be.christophe.order.domain.exceptions.UserNotFound;
-import be.christophe.order.domain.service.Mapper;
+import be.christophe.order.domain.service.UserMapper;
 import be.christophe.order.domain.users.User;
 import be.christophe.order.domain.users.dto.CreateUserDto;
 import be.christophe.order.domain.users.dto.UserDto;
@@ -20,8 +20,8 @@ public class UsersService {
     }
 
     public UserDto createNewUser(CreateUserDto createUser) {
-        User user = Mapper.mapper(createUser);
-        return Mapper.mapper(userRepository.insertUser(user));
+        User user = UserMapper.mapper(createUser);
+        return UserMapper.mapper(userRepository.insertUser(user));
     }
 
     public String login(String authorization) {

@@ -1,5 +1,6 @@
 package be.christophe.order.item.api;
 
+import be.christophe.order.domain.items.dto.CreateItemDto;
 import be.christophe.order.domain.items.dto.ItemDto;
 import be.christophe.order.domain.items.dto.UpdateItemDto;
 import be.christophe.order.item.services.ItemService;
@@ -27,7 +28,7 @@ public class ItemController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public ItemDto postItem(@RequestBody ItemDto itemDto){
-        return itemService.insertItem(itemDto);
+    public ItemDto postItem(@RequestBody CreateItemDto createItemDto){
+        return itemService.insertItem(createItemDto);
     }
 }
