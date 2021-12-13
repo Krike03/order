@@ -40,4 +40,30 @@ class ItemIntegrationTest {
         assertThat(responseMessage.getPrice()).isEqualTo(5.99);
         assertThat(responseMessage.getDescription()).isEqualTo("description");
     }
+
+    @Test
+    void testAddItem_updatePrice_getLatestPrice() {
+//        ItemDto itemDto= new ItemDto("","name", "description", 5.99, "Eur", 5);
+//        ItemDto responseMessage = RestAssured
+//                .given()
+//                .body(itemDto)
+//                .accept(MediaType.APPLICATION_JSON_VALUE)
+//                .contentType(MediaType.APPLICATION_JSON_VALUE)
+//                .when()
+//                .port(port)
+//                .post("/items")
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.CREATED.value())
+//                .extract()
+//                .as(ItemDto.class);
+//
+//        assertThat(responseMessage).isInstanceOf(ItemDto.class);
+//        assertThat(responseMessage.getAmountStock()).isEqualTo(5);
+//        assertThat(responseMessage.getName()).isEqualTo("name");
+//
+//        assertThat(responseMessage.getCurrency()).isEqualTo("Eur");
+//        assertThat(responseMessage.getPrice()).isEqualTo(5.99);
+//        assertThat(responseMessage.getDescription()).isEqualTo("description");
+    }
 }

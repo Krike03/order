@@ -66,4 +66,8 @@ public class Item {
     public void setAmountStock(int amountStock) {
         this.amountStock = amountStock;
     }
+
+    public List<Price> getPrices() {
+        return prices;
+    }
 }

@@ -5,6 +5,7 @@ import be.christophe.order.domain.items.Price;
 import be.christophe.order.domain.items.dto.CreateItemDto;
 import be.christophe.order.domain.items.dto.ItemDto;
 import be.christophe.order.domain.items.dto.UpdateItemDto;
+import be.christophe.order.domain.localdatetime.ILocalDate;
 import be.christophe.order.domain.service.ItemMapper;
 import be.christophe.order.item.api.UserController;
 import be.christophe.order.item.repositories.ItemRepository;
@@ -16,18 +17,19 @@ import java.time.LocalDateTime;
 public class ItemService {
     ItemRepository itemRepository;
     UserController userController;
+    ILocalDate localDate;
 
-    public ItemService(ItemRepository repository, UserController userController) {
+    public ItemService(ItemRepository repository, UserController userController, ILocalDate localDate) {
         this.itemRepository = repository;
         this.userController = userController;
+        this.localDate = localDate;
     }
 
     public ItemDto insertItem(CreateItemDto createItemDto) {
+        ItemMapper itemMapper= new ItemMapper(localDate);
         if(createItemDto==null){ throw new NullPointerException("No item is added, a null object is given.");}
-        Item item = ItemMapper.mapperToItem(createItemDto);
-        Item returnedItem = itemRepository.insertItem(item);
-        ItemDto itemDto = ItemMapper.mapperToItemDto(returnedItem);
-        return itemDto;
+        Item returnedItem = itemRepository.insertItem(itemMapper.mapperToItem(createItemDto));
+        return itemMapper.mapperToItemDto(returnedItem);
     }
 
     public int getItemStockAmountById(String itemId) {
@@ -40,7 +42,8 @@ public class ItemService {
     }
 
     public ItemDto updateItem(String id, UpdateItemDto updateItemDto, String authorization) {
+        ItemMapper itemMapper = new ItemMapper(localDate);
         userController.login(authorization);
-        return ItemMapper.mapperToItemDto(itemRepository.updateItem(id, updateItemDto));
+        return itemMapper.mapperToItemDto(itemRepository.updateItem(id, updateItemDto));
     }
 }

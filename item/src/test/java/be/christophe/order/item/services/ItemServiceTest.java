@@ -5,6 +5,7 @@ import be.christophe.order.domain.items.Price;
 import be.christophe.order.domain.items.dto.CreateItemDto;
 import be.christophe.order.domain.items.dto.ItemDto;
 import be.christophe.order.item.api.UserController;
+import be.christophe.order.item.localdatetime.TestDateTime;
 import be.christophe.order.item.repositories.ItemRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,11 +19,12 @@ class ItemServiceTest {
 
     ItemService itemService;
     ItemRepository itemRepository;
+    TestDateTime testDateTime;
     @BeforeEach
     void setUp() {
         itemRepository = Mockito.mock(ItemRepository.class);
         UserController userController = Mockito.mock(UserController.class);
-        itemService = new ItemService(itemRepository, userController);
+        itemService = new ItemService(itemRepository, userController, testDateTime);
     }
 
     @Nested
@@ -41,7 +43,7 @@ class ItemServiceTest {
             Item returnItemMock = new Item(
                     createItemDto.getName(),
                     createItemDto.getDescription(),
-                    new Price(createItemDto.getPrice(), createItemDto.getCurrency()),
+                    new Price(createItemDto.getPrice(), createItemDto.getCurrency(), testDateTime),
                     createItemDto.getAmountStock());
             ItemDto expectedItem= new ItemDto(
                     returnItemMock.getId(),

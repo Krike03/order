@@ -7,29 +7,37 @@ import be.christophe.order.domain.items.Item;
 import be.christophe.order.domain.items.Price;
 import be.christophe.order.domain.items.dto.CreateItemDto;
 import be.christophe.order.domain.items.dto.ItemDto;
+import be.christophe.order.domain.localdatetime.ILocalDate;
 
 import java.time.LocalDateTime;
 
 public class ItemMapper {
 
-    public static Item mapperToItem(ItemDto itemDto) {
+    private ILocalDate localDate;
+
+    public ItemMapper(ILocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public Item mapperToItem(ItemDto itemDto) {
         return new Item(itemDto.getName(),
                 itemDto.getDescription(),
-                new Price(itemDto.getPrice(), itemDto.getCurrency()),
+                new Price(itemDto.getPrice(), itemDto.getCurrency(), localDate),
                 itemDto.getAmountStock());
     }
 
-    public static Item mapperToItem(CreateItemDto createItemDto) {
+    public  Item mapperToItem(CreateItemDto createItemDto) {
         return new Item(
                 createItemDto.getName(),
                 createItemDto.getDescription(),
                 new Price(createItemDto.getPrice(),
-                        createItemDto.getCurrency()),
+                        createItemDto.getCurrency(),
+                        localDate),
                 createItemDto.getAmountStock()
         );
     }
 
-    public static ItemDto mapperToItemDto(Item item) {
+    public ItemDto mapperToItemDto(Item item) {
         return new ItemDto(item.getId(),
                 item.getName(),
                 item.getDescription(),
@@ -38,7 +46,7 @@ public class ItemMapper {
                 item.getAmountStock());
     }
 
-    public static ItemGroup mapper(CreateItemGroup createItemGroup,
+    public ItemGroup mapper(CreateItemGroup createItemGroup,
                                          String userId, LocalDateTime shippingDate) {
         return new ItemGroup(createItemGroup.getItemId(),
                 userId,
@@ -46,7 +54,7 @@ public class ItemMapper {
                 shippingDate);
     }
 
-    public static ItemGroupDto mapper(ItemGroup newItemGroup, String totalPrice) {
+    public ItemGroupDto mapper(ItemGroup newItemGroup, String totalPrice) {
         return new ItemGroupDto(newItemGroup.getId(),
                 newItemGroup.getItemId(),
                 newItemGroup.getUserId(),

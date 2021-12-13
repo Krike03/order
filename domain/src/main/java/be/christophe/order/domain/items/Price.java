@@ -1,7 +1,6 @@
 package be.christophe.order.domain.items;
 
-import be.christophe.order.domain.service.localdatetime.GetLocalDate;
-import be.christophe.order.domain.service.localdatetime.ILocalDate;
+import be.christophe.order.domain.localdatetime.ILocalDate;
 
 import java.time.LocalDateTime;
 
@@ -13,9 +12,7 @@ public class Price {
     public Price(double price, String currency, ILocalDate localDate) {
         this.price = price;
         this.currency = currency;
-        localDate = new GetLocalDate();
         this.localDate = localDate.now();
-
     }
 
     public double getPrice() {

@@ -3,6 +3,7 @@ package be.christophe.order.item.repositories;
 import be.christophe.order.domain.items.Item;
 import be.christophe.order.domain.items.Price;
 import be.christophe.order.domain.items.dto.UpdateItemDto;
+import be.christophe.order.domain.localdatetime.ILocalDate;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -14,10 +15,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ItemRepository {
     private final Map<String, Item> items;
 
-    public ItemRepository() {
+    ILocalDate localDate;
+
+    public ItemRepository(ILocalDate localDate) {
         items = new ConcurrentHashMap<>();
-        Item item = new Item("name", "description", new Price(4.33, "EUR"), 5);
+        Item item = new Item("name", "description", new Price(4.33, "EUR", localDate), 5);
         items.put(item.getId(), item);
+        this.localDate = localDate;
     }
 
     public Item insertItem(Item item) {
@@ -41,7 +45,7 @@ public class ItemRepository {
         Item item = items.get(id);
         item.setName(updateItemDto.getName());
         item.setDescription(updateItemDto.getDescription());
-        item.setPrice(new Price(updateItemDto.getPrice(), updateItemDto.getCurrency()));
+        item.setPrice(new Price(updateItemDto.getPrice(), updateItemDto.getCurrency(), localDate));
         item.setAmountStock(updateItemDto.getAmountStock());
 
         return item;
