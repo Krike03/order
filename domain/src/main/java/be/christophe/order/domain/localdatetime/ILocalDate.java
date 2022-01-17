@@ -7,4 +7,5 @@ public interface ILocalDate {
 
     void minusDays(int i);
     void plusDays(int i);
+    void reset();
 }

@@ -1,6 +1,7 @@
 package be.christophe.order.item.api;
 
-import be.christophe.order.domain.items.dto.ItemDto;
+import be.christophe.order.item.domain.items.dto.CreateItemDto;
+import be.christophe.order.item.domain.items.dto.ItemDto;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,20 +18,20 @@ class ItemIntegrationTest {
 
     @Test
     void testAddItem() {
-        ItemDto itemDto= new ItemDto("","name", "description", 5.99, "Eur", 5);
+        CreateItemDto itemDto= new CreateItemDto("name", "description", 5.99, "Eur", 5);
         ItemDto responseMessage = RestAssured
-                        .given()
-                        .body(itemDto)
-                        .accept(MediaType.APPLICATION_JSON_VALUE)
-                        .contentType(MediaType.APPLICATION_JSON_VALUE)
-                        .when()
-                        .port(port)
-                        .post("/items")
-                        .then()
-                        .assertThat()
-                        .statusCode(HttpStatus.CREATED.value())
-                        .extract()
-                        .as(ItemDto.class);
+                .given()
+                .body(itemDto)
+                .accept(MediaType.APPLICATION_JSON_VALUE)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .when()
+                .port(port)
+                .post("/items")
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.CREATED.value())
+                .extract()
+                .as(ItemDto.class);
 
         assertThat(responseMessage).isInstanceOf(ItemDto.class);
         assertThat(responseMessage.getAmountStock()).isEqualTo(5);

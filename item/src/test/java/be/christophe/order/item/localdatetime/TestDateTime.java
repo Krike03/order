@@ -25,4 +25,9 @@ public class TestDateTime implements ILocalDate {
     public void plusDays(int days){
         thisTime = thisTime.plusDays(days);
     }
+
+    @Override
+    public void reset() {
+        LocalDateTime.now();
+    }
 }

@@ -1,15 +1,15 @@
 package be.christophe.order.domain.itemgroup.dto;
 
 public class CreateItemGroup {
-    private final String itemId;
+    private final int itemId;
     private final int amount;
 
-    public CreateItemGroup(String itemId, int amount) {
+    public CreateItemGroup(int itemId, int amount) {
         this.itemId = itemId;
         this.amount = amount;
     }
 
-    public String getItemId() {
+    public int getItemId() {
         return itemId;
     }
 

@@ -1,10 +1,9 @@
 package be.christophe.order.item.services;
 
 import be.christophe.order.domain.exceptions.UserNotFound;
-import be.christophe.order.domain.service.UserMapper;
-import be.christophe.order.domain.users.User;
-import be.christophe.order.domain.users.dto.CreateUserDto;
-import be.christophe.order.domain.users.dto.UserDto;
+import be.christophe.order.item.domain.users.User;
+import be.christophe.order.item.domain.users.dto.CreateUserDto;
+import be.christophe.order.item.domain.users.dto.UserDto;
 import be.christophe.order.item.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 

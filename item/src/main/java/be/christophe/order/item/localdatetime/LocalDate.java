@@ -21,4 +21,9 @@ public class LocalDate implements ILocalDate {
     public void plusDays(int i) {
 
     }
+
+    @Override
+    public void reset() {
+
+    }
 }

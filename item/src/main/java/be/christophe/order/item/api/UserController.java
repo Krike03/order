@@ -1,7 +1,7 @@
 package be.christophe.order.item.api;
 
-import be.christophe.order.domain.users.dto.CreateUserDto;
-import be.christophe.order.domain.users.dto.UserDto;
+import be.christophe.order.item.domain.users.dto.CreateUserDto;
+import be.christophe.order.item.domain.users.dto.UserDto;
 import be.christophe.order.item.services.UsersService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

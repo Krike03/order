@@ -1,9 +1,9 @@
 package be.christophe.order.item.repositories;
 
-import be.christophe.order.domain.users.Address;
-import be.christophe.order.domain.users.City;
-import be.christophe.order.domain.users.Street;
-import be.christophe.order.domain.users.User;
+import be.christophe.order.item.domain.users.Address;
+import be.christophe.order.item.domain.users.City;
+import be.christophe.order.item.domain.users.Street;
+import be.christophe.order.item.domain.users.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
